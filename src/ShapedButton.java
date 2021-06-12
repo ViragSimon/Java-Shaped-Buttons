@@ -1,12 +1,18 @@
 
 import javafx.scene.control.Button;
 import javafx.scene.shape.Polygon;
-
+/**
+ * 
+ */
 public class ShapedButton extends Button{
     
     private Double[] points;
     private Polygon shape;
-   
+
+   /**
+    * 
+    * @param numberOfSides
+    */
     public ShapedButton(int numberOfSides) {
         super();
         
@@ -19,7 +25,10 @@ public class ShapedButton extends Button{
         setMinSize(60,60);
             
     }
-
+/**
+ * 
+ * @param numberOfSides
+ */
     public void calculatePoints(int numberOfSides){
 
         double degrees = ((numberOfSides - 2 ) * 180 ) / numberOfSides ;
@@ -40,26 +49,46 @@ public class ShapedButton extends Button{
         yCoordinates[0] = 100.0;
         yCoordinates[1] = 100.0;
 
-        for(int i =2; i<numberOfSides-2; i++){
+        for(int i =2; i<numberOfSides; i++){
             xCoordinates[i] = xCoordinates[i-1] + horizontalMove; 
             yCoordinates[i] = yCoordinates[i-1] + verticalMove;
         }
 
-        for(int i =0; i< numberOfSides; i++){
+        for(int i =0; i< numberOfSides*2; i++){
             points[i]= xCoordinates[i];
             i++;
             points[i]= xCoordinates[i-1];
         }
         
-
-        
             }
-
+/**
+ * 
+ */
     public void createShape(){
         shape= new Polygon();
         shape.getPoints().addAll(points);
         
     }
+/**
+ * 
+ * @param degrees
+ */
+    public void rotate(double degrees){
+
+    }
+
+ 
+    public void setMinHeight(int minHeight){
+
+    }
+      
+    public void setMinWidth(int minWidth){
+
+    }
+
+    public void resize(double width,double height){
         
+    }
+
 
 }

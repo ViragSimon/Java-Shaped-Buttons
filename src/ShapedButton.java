@@ -20,7 +20,7 @@ public class ShapedButton extends Button{
             
     }
 
-    public Double[] calculatePoints(int numberOfSides){
+    public void calculatePoints(int numberOfSides){
         points[0] = 200.0;
         points[1] = 100.0;
         points[2] = 400.0;
@@ -40,7 +40,6 @@ public class ShapedButton extends Button{
             points[i+5] = points[i+3] + verticalMove;
         }
         
-        return points;
             }
 
     public void createShape(){

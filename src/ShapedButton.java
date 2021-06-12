@@ -77,17 +77,9 @@ public class ShapedButton extends Button{
 
     }
 
- 
-    public void setMinHeight(int minHeight){
+    public Double[] calculateCentroid(){
 
-    }
-      
-    public void setMinWidth(int minWidth){
-
-    }
-
-    public void resize(double width,double height){
-        
+    return new Double[3];
     }
 
 

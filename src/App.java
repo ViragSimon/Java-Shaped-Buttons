@@ -14,7 +14,7 @@ public class App extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         BorderPane root = new BorderPane();
-        root.setCenter(new ShapedButton(6));
+        root.setCenter(new CrossButton());
         stage.setMinHeight(500);
         stage.setMinWidth(500);
         stage.setScene(new Scene(root));

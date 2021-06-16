@@ -1,11 +1,7 @@
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Polygon;
-import java.awt.geom.AffineTransform;
+
 /**
  * 
  */
@@ -14,13 +10,13 @@ public class ShapedButton extends Button{
     private Double[] points;
     private Polygon shape;
     private int numberOfSides;
-    private double[] xCoordinates;
-    private double[] yCoordinates;
+    private Double[] xCoordinates;
+    private Double[] yCoordinates;
 
    /**
     * @param numberOfSides
     */
-    public ShapedButton(int numberOfSides, double length) {
+    public ShapedButton(int numberOfSides, Double length) {
         super();
 
         if (numberOfSides <3){
@@ -31,8 +27,8 @@ public class ShapedButton extends Button{
         
         points = new Double[numberOfSides * 2];
 
-         xCoordinates = new double[numberOfSides];
-         yCoordinates = new double[numberOfSides];
+         xCoordinates = new Double[numberOfSides];
+         yCoordinates = new Double[numberOfSides];
 
         calculatePoints(numberOfSides, length);
         createShape();
@@ -49,7 +45,7 @@ public class ShapedButton extends Button{
     * 
     * @param numberOfSides
     */
-    public ShapedButton(double[] coordinates) {
+    public ShapedButton(Double[] coordinates) {
         super();
 
         if (coordinates.length / 6 <= 1){
@@ -60,11 +56,14 @@ public class ShapedButton extends Button{
         throw new IllegalArgumentException("The provided x points are not the same length as the provided y points.");
         }
      
+
         
         this.numberOfSides =  coordinates.length /2;
         
-        points = new Double[numberOfSides * 2];
-
+        points = new Double[coordinates.length];
+        xCoordinates = new Double[numberOfSides];
+        yCoordinates = new Double[numberOfSides];
+        separateCoordinates();
         createShape();
         setShape(shape);
         setPrefSize(100,100);
@@ -105,7 +104,7 @@ public class ShapedButton extends Button{
             }
 
 
-    private void mergeCoordinates(double[] xCoordinates, double[] yCoordinates){
+    private void mergeCoordinates(Double[] xCoordinates, Double[] yCoordinates){
 
         int k=0;
         int j=0;
@@ -118,6 +117,23 @@ public class ShapedButton extends Button{
             }
         }
     }
+
+private void separateCoordinates(){
+int k =0;
+int j =0;
+    for(int i =0; i< points.length; i++){
+
+        if(i%2 ==0){
+xCoordinates[k++] = points[i];
+        }else{
+            yCoordinates[j++] = points[i];
+            }
+
+
+    }
+
+}
+
 /**
  * 
  */

@@ -16,7 +16,9 @@ Project is created with:
 * JavaFX Library
 
 ## How to use
-There are two ways to create a button:
+- Use it as a regular JavaFX Button
+
+- There are two ways to create a button:
 
 ### Using the predetermined /  created classes and their corresponding shaped button
 - These classes based on the shaped button that can create a shape based on given coordiantes or parameters
@@ -30,8 +32,9 @@ There are two ways to create a button:
 
 2. Given the coordiantes of the edges of the ppolygon, a uniques shape can be created and added to the button
 
-    * See: ArrowButton, CrossButton 
-     
+    * See: ArrowButton, CrossButton the buttoon
+
+3. If you jhave created a polygon before then you can use it and create the button based on that
 
 ## Rules to follow when you create a button
 - When you give coordinates for a new polygon then you have to make sure that the given polygon is not self-intersecting.

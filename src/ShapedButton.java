@@ -1,9 +1,11 @@
 
+import java.util.ArrayList;
+
 import javafx.scene.control.Button;
 import javafx.scene.shape.Polygon;
 
 /**
- * This class represtens the customized Arrow shaped button 
+ * This class creates  
  * 
  * 
  * @author  Simon Istvan Virag
@@ -16,17 +18,6 @@ public class ShapedButton extends Button{
     private int numberOfSides; 
     private Double[] xCoordinates; 
     private Double[] yCoordinates;
-
-    /**
-     * 
-     * @param coordinateSize 
-     */
-    public ShapedButton(int coordinateSize){
-        xCoordinates = new Double[coordinateSize];
-        yCoordinates = new Double[coordinateSize];
-        points = new Double[coordinateSize * 2];
-    }
-
 
     /**
      * Constructor for a symmetric polygon
@@ -53,11 +44,21 @@ public class ShapedButton extends Button{
         setShape(shape);
         setPrefSize(100,100);
         setMinSize(60,60);
-            
-
-
     }
 
+    /**
+     * Constructor for a symmetric polygon
+     * 
+     * @param shape shape used to create the button
+     */
+    public ShapedButton(Polygon shape) {
+        this.shape = shape;
+        setShape(shape);
+        
+        points = (Double[]) shape.getPoints().toArray();
+        setPrefSize(100,100);
+        setMinSize(60,60);
+    }
 
 /**
  * Contstuctor of a button with given coordinates
@@ -142,6 +143,7 @@ public class ShapedButton extends Button{
  * and allocate them to their corresponding arrays: xCoordinates, yCoordintes
  */
 protected void separateCoordinates(){
+
 int k =0;
 int j =0;
     for(int i =0; i< points.length; i++){
@@ -188,29 +190,6 @@ int j =0;
 
     }
 
-/**
- * 
- * @param newXCoordiantes
- */
-    public void setXCoordinates(Double [] newXCoordiantes){
-xCoordinates = newXCoordiantes;
-    }
-
-    /**
-     * 
-     * @param newYCoordiantes
-     */
-    public void setYCoordinates(Double [] newYCoordiantes){
-        yCoordinates = newYCoordiantes;
-    }
-
-    /**
-     * Upadate the shape of the button  
-     */
-    public void updateShape(){
-        createShape();
-        setShape(shape);
-    }
 
     
 }

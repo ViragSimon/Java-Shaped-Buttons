@@ -13,6 +13,16 @@ public class ShapedButton extends Button{
     private Double[] xCoordinates;
     private Double[] yCoordinates;
 
+    /**
+     * 
+     * @param coordinateSize
+     */
+    public ShapedButton(int coordinateSize){
+        xCoordinates = new Double[coordinateSize];
+        yCoordinates = new Double[coordinateSize];
+        points = new Double[coordinateSize * 2];
+    }
+
    /**
     * @param numberOfSides
     */
@@ -61,6 +71,7 @@ public class ShapedButton extends Button{
         this.numberOfSides =  coordinates.length /2;
         
         points = new Double[coordinates.length];
+        points = coordinates;
         xCoordinates = new Double[numberOfSides];
         yCoordinates = new Double[numberOfSides];
         separateCoordinates();
@@ -70,6 +81,8 @@ public class ShapedButton extends Button{
         setMinSize(60,60);
             
     }
+
+
 
 
 /**
@@ -103,8 +116,12 @@ public class ShapedButton extends Button{
         
             }
 
-
-    private void mergeCoordinates(Double[] xCoordinates, Double[] yCoordinates){
+/**
+ * 
+ * @param xCoordinates
+ * @param yCoordinates
+ */
+    protected void mergeCoordinates(Double[] xCoordinates, Double[] yCoordinates){
 
         int k=0;
         int j=0;
@@ -117,8 +134,10 @@ public class ShapedButton extends Button{
             }
         }
     }
-
-private void separateCoordinates(){
+/**
+ * 
+ */
+protected void separateCoordinates(){
 int k =0;
 int j =0;
     for(int i =0; i< points.length; i++){
@@ -142,7 +161,10 @@ xCoordinates[k++] = points[i];
         shape.getPoints().addAll(points);
     }
 
-
+/**
+ * 
+ * @param degrees
+ */
     public void rotate(double degrees){
 
         for (int i = 0; i<xCoordinates.length; i++ ){
@@ -155,6 +177,34 @@ xCoordinates[k++] = points[i];
         }
 
         mergeCoordinates(xCoordinates, yCoordinates);
+        createShape();
+        setShape(shape);
 
     }
+
+/**
+ * 
+ * @param newXCoordiantes
+ */
+    public void setXCoordinates(Double [] newXCoordiantes){
+xCoordinates = newXCoordiantes;
+    }
+
+    /**
+     * 
+     * @param newYCoordiantes
+     */
+    public void setYCoordinates(Double [] newYCoordiantes){
+        yCoordinates = newYCoordiantes;
+    }
+
+    /**
+     * 
+     */
+    public void updateShape(){
+        createShape();
+        setShape(shape);
+    }
+
+    
 }

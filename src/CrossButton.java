@@ -1,17 +1,18 @@
 
 
 /**
- * This class represtens the customized hexagonshaped button that is used in the borough map
+ * This class represtens the customized Cross shaped button 
  * 
  * 
  * @author  Simon Istvan Virag
- * @version 28.03.2021
+ * @version 28.05.2021
  */
 class CrossButton extends ShapedButton   {
 
     
-
-  
+/**
+ * Constructor of a CrossButton that defines the intial coordinates of a CrossButton instance
+ */
     public CrossButton(){
         super(new Double[]{
             300.0,100.0,

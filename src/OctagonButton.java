@@ -1,9 +1,19 @@
-
+/**
+ * This class represtens a octagon shaped button 
+ * 
+ * 
+ * @author  Simon Istvan Virag
+ * @version 298.05.2021
+ */
 public class OctagonButton extends ShapedButton{
 
-	public OctagonButton(double length) {
+/**
+ * Constructor of a OctagonButton object
+ * 
+ * @param length distance of edge from centre
+ */
+public OctagonButton(double length) {
 		super(8 ,length);
-		//TODO Auto-generated constructor stub
-	}
+		}
     
 }

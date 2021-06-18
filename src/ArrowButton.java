@@ -1,15 +1,16 @@
 
-
-
 /**
- * This class represtens the customized hexagonshaped button that is used in the borough map
+ * This class represtens the customized Arrow shaped button 
  * 
  * 
  * @author  Simon Istvan Virag
- * @version 28.03.2021
+ * @version 28.05.2021
  */
 class ArrowButton extends ShapedButton   {
-    
+
+    /**
+     * Constructor of an ArrowButton that defines the intial coordinates of an ArrowButton instance
+     */
     public ArrowButton() {
         super(new Double[]{
             100.0,200.0,

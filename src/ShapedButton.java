@@ -3,19 +3,23 @@ import javafx.scene.control.Button;
 import javafx.scene.shape.Polygon;
 
 /**
+ * This class represtens the customized Arrow shaped button 
  * 
+ * 
+ * @author  Simon Istvan Virag
+ * @version 28.05.2021
  */
 public class ShapedButton extends Button{
     
-    private Double[] points;
-    private Polygon shape;
-    private int numberOfSides;
-    private Double[] xCoordinates;
+    private Double[] points; // points to create a shape
+    private Polygon shape; 
+    private int numberOfSides; 
+    private Double[] xCoordinates; 
     private Double[] yCoordinates;
 
     /**
      * 
-     * @param coordinateSize
+     * @param coordinateSize 
      */
     public ShapedButton(int coordinateSize){
         xCoordinates = new Double[coordinateSize];
@@ -23,9 +27,13 @@ public class ShapedButton extends Button{
         points = new Double[coordinateSize * 2];
     }
 
-   /**
-    * @param numberOfSides
-    */
+
+    /**
+     * Constructor for a symmetric polygon
+     * 
+     * @param numberOfSides
+     * @param length distance of edges from the centre
+     */
     public ShapedButton(int numberOfSides, Double length) {
         super();
 
@@ -51,10 +59,11 @@ public class ShapedButton extends Button{
     }
 
 
- /**
-    * 
-    * @param numberOfSides
-    */
+/**
+ * Contstuctor of a button with given coordinates
+ * 
+ * @param coordinates An array that has both x and y coordinates 
+ */
     public ShapedButton(Double[] coordinates) {
         super();
 
@@ -65,9 +74,7 @@ public class ShapedButton extends Button{
         if (coordinates.length % 2 == 1){
         throw new IllegalArgumentException("The provided x points are not the same length as the provided y points.");
         }
-     
 
-        
         this.numberOfSides =  coordinates.length /2;
         
         points = new Double[coordinates.length];
@@ -82,25 +89,19 @@ public class ShapedButton extends Button{
             
     }
 
-
-
-
 /**
+ * Calculates the points for a symmetric polygon
  * 
- * @param numberOfSides
- * @param length
+ * @param numberOfSides 
+ * @param length 
  */
     public void calculatePoints(int numberOfSides, double length){
-
-
-        
 
         double theta = Math.PI/2;
         double dTheta = 2 * Math.PI / numberOfSides; 
 
         xCoordinates[0] = 0.0;
         yCoordinates[0] = length;
-
 
         for(int i =1; i< numberOfSides; i++){
         theta += dTheta;
@@ -117,9 +118,10 @@ public class ShapedButton extends Button{
             }
 
 /**
+ * Merges the x and y coordiantes into the poiunts array
  * 
- * @param xCoordinates
- * @param yCoordinates
+ * @param xCoordinates points on the x axis
+ * @param yCoordinates points on the y axis
  */
     protected void mergeCoordinates(Double[] xCoordinates, Double[] yCoordinates){
 
@@ -134,8 +136,10 @@ public class ShapedButton extends Button{
             }
         }
     }
-/**
- * 
+
+/** 
+ * This method separates the x and y coordinates from the points array 
+ * and allocate them to their corresponding arrays: xCoordinates, yCoordintes
  */
 protected void separateCoordinates(){
 int k =0;
@@ -143,7 +147,7 @@ int j =0;
     for(int i =0; i< points.length; i++){
 
         if(i%2 ==0){
-xCoordinates[k++] = points[i];
+            xCoordinates[k++] = points[i];
         }else{
             yCoordinates[j++] = points[i];
             }
@@ -154,7 +158,7 @@ xCoordinates[k++] = points[i];
 }
 
 /**
- * 
+ * Creates the shape of the button and sets it 
  */
     public void createShape(){
         shape= new Polygon();
@@ -162,8 +166,9 @@ xCoordinates[k++] = points[i];
     }
 
 /**
+ * Rotates the polygon with the given degrees
  * 
- * @param degrees
+ * @param degrees number of degrees of rotation, anticlockwise
  */
     public void rotate(double degrees){
 
@@ -171,6 +176,7 @@ xCoordinates[k++] = points[i];
         double xPoint = xCoordinates[i];
         double yPoint = yCoordinates[i];
 
+        //translate coordinates
         xCoordinates[i] = xPoint*Math.cos(degrees) - yPoint * Math.sin(degrees);
         yCoordinates[i] = yPoint*Math.cos(degrees) + xPoint * Math.sin(degrees);
 
@@ -199,7 +205,7 @@ xCoordinates = newXCoordiantes;
     }
 
     /**
-     * 
+     * Upadate the shape of the button  
      */
     public void updateShape(){
         createShape();
